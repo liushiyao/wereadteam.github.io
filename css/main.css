@@ -186,8 +186,8 @@ th {
 body {
   position: relative;
   font-family: Lato, "PingFang SC", "Microsoft YaHei", sans-serif;
-  font-size: 14px;
-  line-height: 2;
+  font-size: 16px;
+  line-height: 1.8;
   color: #555;
   background: #fff;
 }
@@ -203,7 +203,7 @@ body {
 }
 @media (min-width: 1600px) {
   body {
-    font-size: 16px;
+    font-size: 18px;
   }
 }
 h1,
@@ -226,7 +226,7 @@ h6 {
   margin: 20px 0 15px;
 }
 h1 {
-  font-size: 24px;
+  font-size: 28px;
 }
 @media (max-width: 767px) {
   h1 {
@@ -274,7 +274,7 @@ h6 {
   }
 }
 p {
-  margin: 0 0 25px 0;
+  margin: 0 0 15px 0;
 }
 a {
   color: #555;
@@ -1037,7 +1037,7 @@ pre .javascript .function {
 .post-body .figure .caption {
   margin: 10px auto 15px;
   text-align: center;
-  font-size: 14px;
+  font-size: 16px;
   color: #999;
   font-weight: bold;
   line-height: 1;
@@ -1536,7 +1536,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #75d7cf;
+  background: #222606;
 }
 .sidebar-nav {
   margin: 0 0 20px;
@@ -1989,7 +1989,9 @@ pre .javascript .function {
 .page-post-detail .comments {
   overflow: hidden;
 }
-h1,
+h1 {
+  margin: 30px 0 10px;
+}
 h2,
 h3,
 h4,
@@ -1998,7 +2000,7 @@ h6 {
   margin: 20px 0 10px;
 }
 p {
-  margin: 0 0 25px 0;
+  margin: 0 0 15px 0;
 }
 a {
   border-bottom-color: #ccc;
@@ -2193,12 +2195,12 @@ ul li {
 }
 @media (max-width: 767px) {
   .posts-expand .post-title {
-    font-size: 20px;
+    font-size: 24px;
   }
 }
 @media (min-width: 1600px) {
   .posts-expand .post-title {
-    font-size: 26px;
+    font-size: 30px;
   }
 }
 .posts-expand .post-title:hover:before {
@@ -2227,7 +2229,7 @@ ul li {
 }
 .post-more-link a {
   padding: 0;
-  font-size: 14px;
+  font-size: 16px;
   color: #666;
   background: none;
   border: none;
@@ -2236,12 +2238,12 @@ ul li {
 }
 @media (max-width: 767px) {
   .post-more-link a {
-    font-size: 12px;
+    font-size: 14px;
   }
 }
 @media (min-width: 1600px) {
   .post-more-link a {
-    font-size: 16px;
+    font-size: 18px;
   }
 }
 .post-more-link a:hover {
