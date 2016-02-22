@@ -226,7 +226,7 @@ h6 {
   margin: 20px 0 15px;
 }
 h1 {
-  font-size: 28px;
+  font-size: 24px;
 }
 @media (max-width: 767px) {
   h1 {
@@ -1536,7 +1536,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #222606;
+  background: #bdbdb3;
 }
 .sidebar-nav {
   margin: 0 0 20px;
@@ -1990,7 +1990,8 @@ pre .javascript .function {
   overflow: hidden;
 }
 h1 {
-  margin: 30px 0 10px;
+  margin: 35px 0 10px;
+  font-size: 28px;
 }
 h2,
 h3,
