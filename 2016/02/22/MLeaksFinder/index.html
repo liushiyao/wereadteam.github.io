@@ -69,7 +69,7 @@ Leaked memory: Memory unreferenced by your application tha">
 Leaks先看看 Leaks，从苹果的开发者文档里可以看到，一个 app 的内存分三类：
 
 Leaked memory: Memory unreferenced by your application tha">
-<meta property="og:updated_time" content="2016-02-22T07:10:00.000Z">
+<meta property="og:updated_time" content="2016-06-30T03:28:17.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MLeaksFinder：精准 iOS 内存泄露检测工具">
 <meta name="twitter:description" content="背景平常我们都会用 Instrument 的 Leaks / Allocations 或其他一些开源库进行内存泄露的排查，但它们都存在各种问题和不便，我们逐个来看这些工具的使用和存在的问题。
@@ -268,6 +268,7 @@ Leaked memory: Memory unreferenced by your application tha">
 </li>
 </ul>
 <p>其中 Leaked memory 和 Abandoned memory 都属于应该释放而没释放的内存，都是内存泄露，而 Leaks 工具只负责检测 Leaked memory，而不管 Abandoned memory。在 MRC 时代 Leaked memory 很常见，因为很容易忘了调用 release，但在 ARC 时代更常见的内存泄露是循环引用导致的 Abandoned memory，Leaks 工具查不出这类内存泄露，应用有限。</p>
+<a id="more"></a>
 <h3 id="Allocations"><a href="#Allocations" class="headerlink" title="Allocations"></a>Allocations</h3><p>对于 Abandoned memory，可以用 Instrument 的 Allocations 检测出来。检测方法是用 Mark Generation 的方式，当你每次点击 Mark Generation 时，Allocations 会生成当前 App 的内存快照，而且 Allocations 会记录从上回内存快照到这次内存快照这个时间段内，新分配的内存信息。举一个最简单的例子：</p>
 <p>我们可以不断重复 push 和 pop 同一个 UIViewController，理论上来说，push 之前跟 pop 之后，app 会回到相同的状态。因此，在 push 过程中新分配的内存，在 pop 之后应该被 dealloc 掉，除了前几次 push 可能有预热数据和 cache 数据的情况。如果在数次 push 跟 pop 之后，内存还不断增长，则有内存泄露。因此，我们在每回 push 之前跟 pop 之后，都 Mark Generation 一下，以此观察内存是不是无限制增长。这个方法在 WWDC 的视频里：<a href="http://developer.apple.com/videos/wwdc/2010/" target="_blank" rel="external">Session 311 - Advanced Memory Analysis with Instruments</a>，以及苹果的开发者文档：<a href="https://developer.apple.com/library/mac/recipes/Instruments_help_articles/FindingAbandonedMemory/FindingAbandonedMemory.html" target="_blank" rel="external">Finding Abandoned Memory</a> 里有介绍。</p>
 <p>用这种方法来发现内存泄露还是很不方便的：</p>
@@ -465,7 +466,7 @@ Leaked memory: Memory unreferenced by your application tha">
                 <div class="links-of-author-item">
                   <a href="https://github.com/liuslevis/GYBootingProtection" target="_blank">
                     
-                      <i class="fa fa-globe"></i> GYBootingProtection
+                      <i class="fa fa-github"></i> GYBootingProtection
                     
                   </a>
                 </div>

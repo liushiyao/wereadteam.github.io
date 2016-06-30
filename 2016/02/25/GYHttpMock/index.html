@@ -68,7 +68,7 @@
 <meta property="og:image" content="http://wereadteam.github.io/./img/HttpMock2.png">
 <meta property="og:image" content="http://wereadteam.github.io/./img/HttpMock2.png">
 <meta property="og:image" content="http://wereadteam.github.io/./img/HttpMock3.png">
-<meta property="og:updated_time" content="2016-02-25T13:09:09.000Z">
+<meta property="og:updated_time" content="2016-06-30T03:27:58.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="GYHttpMock：iOS HTTP请求模拟工具">
 <meta name="twitter:description" content="GYHttpMock 是刚开源的 iOS 请求模拟工具，用于iOS App网络层开发，可以截获指定的 HTTP request，并根据规则，完全替换或部分修改真实的网络返回数据。
@@ -257,6 +257,7 @@
         <p><a href="http://github.com/hypoyao/GYHttpMock" target="_blank" rel="external">GYHttpMock</a> 是刚开源的 iOS 请求模拟工具，用于iOS App网络层开发，可以截获指定的 HTTP request，并根据规则，完全替换或部分修改真实的网络返回数据。</p>
 <h2 id="u80CC_u666F"><a href="#u80CC_u666F" class="headerlink" title="背景"></a>背景</h2><p>iOS App开发过程中，前台开发过程通常都是并行进行的，因此难免会出现一些客户端需要等待后台开发联调的情景，等待的过程往往痛若而无奈（后台被催得痛苦，前端无奈等待）。通常解决办法是，客户端在某处 hardcode 网络返回数据，当然，一不小心，这种测试代码被提交到了线上也是常有的事情。还有更“高级”一点，通过设置代理，用抓包工具修改网络数据，但这种效率低得令人抓狂。</p>
 <p>引入一个可以模拟网络请求的工具似乎就可以轻松满足需求，但实践证明，“模拟网络请求”这个需求并不简单。例如对于全新的业务，后台如果还没有数据，前端完全可以根据协议自己制造假数据返回。但是，很多情况下，可能是对已有业务的变更，也就是需要修改后台已有的业务数据。</p>
+<a id="more"></a>
 <h2 id="u4E1A_u754C_u89E3_u51B3_u65B9_u6848"><a href="#u4E1A_u754C_u89E3_u51B3_u65B9_u6848" class="headerlink" title="业界解决方案"></a>业界解决方案</h2><p>为了满足开发过程中模拟网络请求的需求，HttpMock 工具应运而生，目前业界已经有许多不同的实现方式，基本可以分为两类：</p>
 <p><strong>1.自建HTTP Server</strong></p>
 <p>可以在本地搭建 HTTP Server 模拟返回客户端所需要的数据。以 <a href="https://www.nuget.org/packages/HttpMock/" target="_blank" rel="external">hibri/HttpMock</a> 为例，它就是在本地搭建了一个HTTP Mock Server，然后根据需求返回指定数据。对于不需要模拟的请求，直接到达真实的Server，需要模拟的请求就转向MockServer。</p>
@@ -454,7 +455,7 @@
                 <div class="links-of-author-item">
                   <a href="https://github.com/liuslevis/GYBootingProtection" target="_blank">
                     
-                      <i class="fa fa-globe"></i> GYBootingProtection
+                      <i class="fa fa-github"></i> GYBootingProtection
                     
                   </a>
                 </div>
