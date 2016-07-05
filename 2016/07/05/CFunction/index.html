@@ -69,7 +69,9 @@ require(&apos;JPEngine&apos;).addExtensions([&apos;JPCFunction&apos;])defineCFun
 require(&apos;JPEngine&apos;).addExtensions([&apos;JPCFunction&apos;])defineCFunction(&quot;malloc&quot;, &quot;void *, size_t&quot;)malloc(10)
 我们一步步来看看怎样可以做到动态调用 C 函数。
 函">
-<meta property="og:updated_time" content="2016-07-05T13:04:22.000Z">
+<meta property="og:image" content="http://wereadteam.github.io/./img/c1.png">
+<meta property="og:image" content="http://wereadteam.github.io/./img/c2.png">
+<meta property="og:updated_time" content="2016-07-05T13:06:39.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="如何动态调用 C 函数">
 <meta name="twitter:description" content="JSPatch 支持了动态调用 C 函数，无需在编译前桥接每个要调用的 C 函数，只需要在 JS 里调用前声明下这个函数，就可以直接调用：
@@ -278,7 +280,9 @@ require(&apos;JPEngine&apos;).addExtensions([&apos;JPCFunction&apos;])defineCFun
 <h2 id="Calling_Convention"><a href="#Calling_Convention" class="headerlink" title="Calling Convention"></a>Calling Convention</h2><p>一个函数的调用过程中，函数的参数既可以使用栈传递，也可以使用寄存器传递，参数压栈的顺序可以从左到右也可以从右到左，函数调用后参数从栈弹出这个工作可以由函数调用方完成，也可以由被调用方完成。如果函数的调用方和被调用方(函数本身)不遵循统一的约定，有这么多分歧这个函数调用就没法完成。这个双方必须遵守的统一约定就叫做调用惯例(Calling Convention)，调用惯例规定了参数的传递的顺序和方式，以及栈的维护方式。</p>
 <p>函数调用者和被调用者需要遵循这同一套约定，上述②这样的情况，就是函数本身遵循了这个约定，而调用者没有遵守，导致调用出错。</p>
 <p>再简单分析下，如果按①那样正确的定义方式定义funcPointer，然后调用它，这里编译成汇编后，在调用处会有相应指令把参数 n,m 的值 1 和 2 入栈，然后跳过去 <code>testFunc()</code> 函数实体执行，这个函数执行时，按约定它知道n,m两个参数值已经在栈上，就可以取出来使用了。</p>
+<p><img src="/./img/c1.png" alt=""></p>
 <p>而如果按②那样定义，编译后这里不会把参数 n,m 的值 1 和 2 入栈，因为这里编译器把它当成了没有参数和没有返回值的函数，也就不需要进行参数入栈的操作，然后在 <code>testFunc()</code> 函数实体里按约定去栈上取参数时就会发现栈上本来应该存参数 n 和 m 的地方并没有数据，或者是其他错误的数据，导致调用出错。</p>
+<p><img src="/./img/c2.png" alt=""></p>
 <p>所以你需要在调用前明确告诉编译器这个函数的参数和返回值类型是什么，编译器才能生成对应的正确的汇编代码，让被调用的函数执行时能正常取到参数。</p>
 <p>也就是说如果需要动态调用任意 C 函数，就得先准备好任意 参数类型/参数个数/返回值类型 排列组合的 C 函数指针，让最终的汇编把所有情况都准备好，最后调用时通过 switch 去找到正确的那个去执行就可以了。但显然这是很糟糕的主意。</p>
 <p>在 C 语言这个层面上是解决不了这个问题的，要解决只能再往底层走，靠汇编。</p>
