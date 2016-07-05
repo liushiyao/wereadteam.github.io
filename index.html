@@ -169,15 +169,6 @@
 
     
     
-      
-      
-        
-        
-        
-      
-
-      
-    
 
     
       
@@ -274,7 +265,7 @@
 <h2 id="u51FD_u6570_u5730_u5740"><a href="#u51FD_u6570_u5730_u5740" class="headerlink" title="函数地址"></a>函数地址</h2><p>首先若要动态调用 C 函数，第一步就是需要通过传入一个函数名字符串找到这个函数地址，这里一个必要的前提条件就是 C 编译后的可执行文件里必须有原函数名的信息，才有可能做到通过函数名字符串找到函数地址。我们写个简单的程序来看看它编译后可执行文件的内容有没有这个信息：</p>
 <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//main.m</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">test</span><span class="params">()</span> </span>&#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>编译这个文件，并用otool看下它的汇编：</p>
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line">&#10;gcc main.m -o main.o&#10;otool -tV main.o</span><br></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">gcc main.m -o main.o&#10;otool -tV main.o</span><br></pre></td></tr></table></figure>
 <p>输出：</p>
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/07/05/CFunction/#more" rel="contents">
