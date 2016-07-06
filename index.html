@@ -201,6 +201,128 @@
             
               
                 
+                <a class="post-title-link" href="/2016/07/06/GYDataCenter/" itemprop="url">
+                  GYDataCenter：高性能数据库框架
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-06T10:44:47+08:00" content="2016-07-06">
+              2016-07-06
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <!--span class="post-meta-item-text">分类于</span-->
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <!--a href="/categories/zepo/" itemprop="url" rel="index"-->
+                    <span itemprop="name">zepo</span>
+                  <!--/a-->
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/07/06/GYDataCenter/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/07/06/GYDataCenter/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p><a href="https://github.com/Zepo/GYDataCenter">GYDataCenter</a> 是一个 SQLite 数据库框架，提供了一套简单易用的面向对象的数据操作接口，同时保留了 SQL 查询的灵活性。GYDataCenter 简单易上手，相对于 CoreData，GYDataCenter 的学习成本更低。同时，根据自己的需求，开发者可以更方便地划分数据库，设计数据库表，数据库索引等。</p>
+<h1 id="u6982_u89C8"><a href="#u6982_u89C8" class="headerlink" title="概览"></a>概览</h1><p>GYDataCenter 具有以下特性：</p>
+<ul>
+<li>面向对象的数据操作接口</li>
+<li>使用 SQLite 的 where 语句做为查询条件</li>
+<li>自动创建及更新数据库表</li>
+<li>高性能 cache 层</li>
+<li>faulting 机制（类似 Core Data）</li>
+<li>自动批量写入磁盘</li>
+<li>使用 <a href="https://www.sqlite.org/lang_analyze.html">ANALYZE</a> 优化查询</li>
+</ul>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/07/06/GYDataCenter/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/07/05/CFunction/" itemprop="url">
                   如何动态调用 C 函数
                 </a>
@@ -737,7 +859,7 @@
           <p>看了 Limboy(<a href="http://limboy.me/ios/2016/03/10/mgj-components.html">文章1</a> <a href="http://limboy.me/ios/2016/03/14/mgj-components-continued.html">文章2</a>) 和 Casa (<a href="http://casatwy.com/iOS-Modulization.html">文章</a>) 对 iOS 组件化方案的讨论，写篇文章梳理下思路。</p>
 <p>首先我觉得”组件”在这里不太合适，因为按我理解组件是指比较小的功能块，这些组件不需要多少组件间通信，没什么依赖，也就不需要做什么其他处理，面向对象就能搞定。而这里提到的是较大粒度的业务功能，我们习惯称为”模块”。为了方便表述，下面模块和组件代表同一个意思，都是指较大粒度的业务模块。</p>
 <p>一个 APP 有多个模块，模块之间会通信，互相调用，例如微信读书有 书籍详情  想法列表  阅读器  发现卡片  等等模块，这些模块会互相调用，例如 书籍详情要调起阅读器和想法列表，阅读器要调起想法列表和书籍详情，等等，一般我们是怎样调用呢，以阅读器为例，会这样写：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#import &#34;WRBookDetailViewController.h&#34;&#10;#import &#34;WRReviewViewController.h&#34;&#10;@implementation Mediator&#10;+ (void)gotoDetail &#123;&#10;    WRBookDetailViewController *detailVC = [[WRBookDetailViewController alloc] initWithBookId:self.bookId];&#10;    [self.navigationController.pushViewController:detailVC animated:YES];&#10;&#125;&#10;&#10;+ (void)gotoReview &#123;&#10;    WRReviewViewController *reviewVC = [[WRReviewViewController alloc] initWithBookId:self.bookId reviewType:1];&#10;    [self.navigationController.pushViewController:reviewVC animated:YES];&#10;&#125;&#10;@end</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#import &#34;WRBookDetailViewController.h&#34;&#10;#import &#34;WRReviewViewController.h&#34;&#10;@implementation Mediator&#10;- (void)gotoDetail &#123;&#10;    WRBookDetailViewController *detailVC = [[WRBookDetailViewController alloc] initWithBookId:self.bookId];&#10;    [self.navigationController.pushViewController:detailVC animated:YES];&#10;&#125;&#10;&#10;- (void)gotoReview &#123;&#10;    WRReviewViewController *reviewVC = [[WRReviewViewController alloc] initWithBookId:self.bookId reviewType:1];&#10;    [self.navigationController.pushViewController:reviewVC animated:YES];&#10;&#125;&#10;@end</span><br></pre></td></tr></table></figure>
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/03/19/iOS-Component/#more" rel="contents">
               阅读全文 &raquo;
@@ -1039,7 +1161,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/">
-              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-count">8</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1074,7 +1196,7 @@
                 <div class="links-of-author-item">
                   <a href="https://github.com/Zepo/MLeaksFinder" target="_blank">
                     
-                      <i class="fa fa-globe"></i> MLeaksFinder
+                      <i class="fa fa-github"></i> MLeaksFinder
                     
                   </a>
                 </div>
